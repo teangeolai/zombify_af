@@ -2,7 +2,7 @@
 
 "manifest_version": 2,
 "name": "Zombify",
-"version": "0.1",
+"version": "0.2",
 "description": "Une extension Firefox pour zombifier l'Académie française !",
 "homepage_url": "https://github.com/teangeolai/zombify_af",
 "icons": {
