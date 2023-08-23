@@ -105,7 +105,7 @@ function replaceHead() {
 
 function replaceHeader() {
 	var bgElement = document.querySelector("body");
-	var bgUrl = browser.extension.getURL("images/header_image.jpg");
+	var bgUrl = browser.extension.getURL("images/header_image.png");
 	bgElement.style.background = `transparent url('${bgUrl}') no-repeat center top`;	
 }
 
