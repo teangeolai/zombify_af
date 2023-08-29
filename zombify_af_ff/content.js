@@ -13,6 +13,7 @@ function replace() {
 	replaceHead();
 	replaceHeader();
 	replaceBackground();
+	zombifier();
 
 	var gallery = document.getElementById("block-system-main");
 	if (!gallery) {
@@ -112,4 +113,36 @@ function replaceHeader() {
 function replaceBackground() {
 	var page = document.querySelector("body");
 	page.style.backgroundColor = "#656c72";
+}
+
+function zombifier() {
+    const wordsToReplace = {
+        "élu": "zombifié",
+        "élue": "zombifiée",
+        "élus": "zombifiés",
+        "immortelle": "zombie",
+        "d'immortel": "de zombie",
+    	"immortel": "zombie",
+    	"immortels": "zombies",
+        
+        
+        // Add more word replacements as needed
+    };
+
+    function replaceWords(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            let content = node.textContent;
+            for (const oldWord in wordsToReplace) {
+                const newWord = wordsToReplace[oldWord];
+                content = content.replace(new RegExp(`(?<=^|\\b|\\s)${oldWord}(?=$|\\b|\\s)`, 'gi'), newWord);
+            }
+            node.textContent = content;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            for (const childNode of node.childNodes) {
+                replaceWords(childNode);
+            }
+        }
+    }
+
+    replaceWords(document.body);
 }
